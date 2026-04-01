@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoNation — South Africa's Premier Luxury Dealership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+:root {
+  --bg: #0c0c0c; --surface: #141414; --surface2: #1c1c1c;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.15);
+  --text: #f0f0f0; --muted: #888; --dim: #555;
+  --accent: #c8b89a; --white: #fff;
+}
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-weight: 300; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+ 
+/* NAV */
+nav { position: fixed; inset: 0 0 auto 0; z-index: 100; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; transition: background .3s, border-bottom .3s; }
+nav.solid { background: rgba(12,12,12,0.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+.logo { display: flex; align-items: center; text-decoration: none; }
+.logo img { height: 30px; object-fit: contain; filter: brightness(10); }
+.logo-fb { font-size: 17px; font-weight: 600; letter-spacing: 3px; color: #fff; text-transform: uppercase; display: none; }
+.logo-fb span { color: var(--accent); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; transition: color .2s; }
+.nav-links a:hover { color: #fff; }
+.nav-r { display: flex; gap: 12px; }
+.nbtn { font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 9px 22px; border: 1px solid rgba(255,255,255,.22); color: #fff; text-decoration: none; transition: all .2s; }
+.nbtn:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+.nbtn.fill { background: #fff; color: #000; border-color: #fff; }
+.nbtn.fill:hover { background: #ddd; }
+ 
+/* HERO */
+.hero { position: relative; height: 100vh; min-height: 680px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+.hero-bg { position: absolute; inset: 0; background: linear-gradient(to top, #0c0c0c 0%, rgba(12,12,12,.5) 38%, rgba(12,12,12,.15) 100%), linear-gradient(120deg, #0c0c0c 0%, #16110d 50%, #0c0c0c 100%); }
+.hero-car { position: absolute; bottom: 17%; left: 50%; transform: translateX(-48%); width: 820px; opacity: 0; animation: carIn 1.8s cubic-bezier(.22,1,.36,1) .3s forwards; }
+@keyframes carIn { from{opacity:0;transform:translateX(-46%) translateY(24px)} to{opacity:1;transform:translateX(-48%) translateY(0)} }
+.hero-glow { position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); width: 700px; height: 80px; background: radial-gradient(ellipse, rgba(200,184,154,.07) 0%, transparent 70%); pointer-events: none; animation: carIn 2s ease .5s both; }
+.hero-content { position: relative; z-index: 5; padding: 0 64px 80px; max-width: 680px; }
+.hero-tag { display: inline-flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; opacity: 0; animation: fUp .7s ease .8s forwards; }
+.hero-tag::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+.hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(44px, 6vw, 84px); font-weight: 400; line-height: 1.06; letter-spacing: -1px; color: #fff; margin-bottom: 22px; opacity: 0; animation: fUp .7s ease 1s forwards; }
+.hero-sub { font-size: 14px; line-height: 1.8; color: var(--muted); max-width: 400px; margin-bottom: 38px; opacity: 0; animation: fUp .7s ease 1.2s forwards; }
+.hero-btns { display: flex; gap: 14px; opacity: 0; animation: fUp .7s ease 1.4s forwards; }
+.btn { display: inline-block; text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; padding: 13px 30px; transition: all .22s; }
+.btn-w { background: #fff; color: #000; }
+.btn-w:hover { background: #ddd; }
+.btn-g { border: 1px solid rgba(255,255,255,.25); color: #fff; }
+.btn-g:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+.hero-scroll { position: absolute; right: 48px; bottom: 80px; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; animation: fUp .7s ease 1.6s forwards; }
+.hero-scroll span { writing-mode: vertical-rl; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); }
+.sbar { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--accent), transparent); animation: sb 2.2s ease-in-out infinite; }
+@keyframes sb { 0%,100%{opacity:.35;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(.65)} }
+@keyframes fUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+ 
+/* QUICKLINKS */
+.ql { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--border); }
+.ql a { padding: 30px 40px; border-right: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: var(--text); transition: background .22s; }
+.ql a:last-child { border-right: none; }
+.ql a:hover { background: var(--surface); }
+.ql a:hover .qa { transform: translateX(5px); }
+.qs { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); display: block; margin-bottom: 5px; }
+.qt { font-size: 17px; font-weight: 400; color: #fff; }
+.qa { color: var(--accent); font-size: 18px; transition: transform .22s; }
+ 
+/* SECTIONS */
+.sec { padding: 96px 64px; }
+.sec-sm { padding: 72px 64px; }
+.lbl { font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.lbl::before { content: ''; width: 22px; height: 1px; background: var(--accent); }
+.ttl { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3.5vw, 50px); font-weight: 400; line-height: 1.15; color: #fff; }
+.sec-hd { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 52px; }
+.va { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid transparent; padding-bottom: 3px; transition: all .2s; }
+.va::after { content: '→'; }
+.va:hover { color: #fff; border-color: #fff; }
+ 
+/* INVENTORY */
+.inv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.ic { background: var(--surface); overflow: hidden; cursor: pointer; position: relative; }
+.ic.feat { grid-column: span 2; }
+.ic:hover .ic-in { transform: scale(1.04); }
+.ic:hover .ic-ov { opacity: 1; }
+.ic-img { overflow: hidden; }
+.ic.feat .ic-img { height: 370px; }
+.ic:not(.feat) .ic-img { height: 215px; }
+.ic-in { width: 100%; height: 100%; transition: transform .7s cubic-bezier(.22,1,.36,1); display: flex; align-items: center; justify-content: center; }
+.cb1{background:linear-gradient(150deg,#18130e,#0c0c0c)} .cb2{background:linear-gradient(150deg,#0a0f1a,#0c0c0c)} .cb3{background:linear-gradient(150deg,#100a0a,#0c0c0c)} .cb4{background:linear-gradient(150deg,#0a1210,#0c0c0c)} .cb5{background:linear-gradient(150deg,#14100a,#0c0c0c)}
+.ic-ov { position: absolute; inset: 0; background: rgba(0,0,0,.42); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .28s; }
+.ic-ov span { border: 1px solid rgba(255,255,255,.55); color: #fff; padding: 11px 26px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+.ic-badge { position: absolute; top: 14px; left: 14px; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; font-weight: 500; }
+.b-new{background:var(--accent);color:#000} .b-av{background:rgba(255,255,255,.1);color:#fff;backdrop-filter:blur(6px)} .b-sold{background:rgba(192,57,43,.7);color:#fff}
+.ic-svg { width: 84%; opacity: .82; }
+.ic.feat .ic-svg { width: 78%; }
+.ic-body { padding: 18px 22px 22px; border-top: 1px solid var(--border); }
+.ic-make { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.ic-model { font-family: 'Playfair Display', serif; font-weight: 400; color: #fff; margin-bottom: 12px; line-height: 1.2; }
+.ic.feat .ic-model { font-size: 28px; } .ic:not(.feat) .ic-model { font-size: 20px; }
+.ic-specs { display: flex; gap: 18px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.ic-sp { display: flex; flex-direction: column; gap: 2px; }
+.ic-sv { font-size: 14px; font-weight: 500; color: #fff; } .ic-sk { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); }
+.ic-ft { display: flex; justify-content: space-between; align-items: center; }
+.ic-price { font-size: 15px; font-weight: 500; color: #fff; } .ic-poa { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); margin-top: 2px; }
+.ic-arr { width: 34px; height: 34px; border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; color: var(--dim); font-size: 14px; transition: all .2s; }
+.ic:hover .ic-arr { border-color: #fff; color: #fff; }
+ 
+/* MARQUEE */
+.mq { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; padding: 15px 0; background: var(--surface); }
+.mq-t { display: inline-flex; animation: mq 32s linear infinite; white-space: nowrap; }
+.mq:hover .mq-t { animation-play-state: paused; }
+.mq-i { display: flex; align-items: center; gap: 28px; padding: 0 28px; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); }
+.mq-i::after { content: '—'; color: rgba(255,255,255,.1); }
+@keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+ 
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; min-height: 520px; }
+.about-vis { background: var(--surface); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; min-height: 520px; }
+.about-vis::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 65% 55% at 50% 55%, rgba(200,184,154,.07) 0%, transparent 70%); }
+.about-vis svg { width: 74%; position: relative; z-index: 1; opacity: .72; }
+.about-txt { background: var(--surface2); padding: 80px 70px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--border); }
+.about-txt p { font-size: 14px; line-height: 1.9; color: var(--muted); margin-bottom: 16px; }
+.stat-row { display: flex; gap: 40px; margin: 32px 0; padding: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.st-n { font-family: 'Playfair Display', serif; font-size: 40px; color: #fff; line-height: 1; display: block; }
+.st-l { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-top: 6px; display: block; }
+ 
+/* BRANDS */
+.br-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.br-cell { background: var(--bg); padding: 30px 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; }
+.br-cell:hover { background: var(--surface2); }
+.br-cell span { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); transition: color .2s; font-weight: 400; text-align: center; }
+.br-cell:hover span { color: #fff; }
+ 
+/* SERVICES */
+.svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.sv { background: var(--surface); padding: 46px 42px 42px; border-top: 2px solid transparent; transition: all .28s; cursor: pointer; }
+.sv:hover { background: var(--surface2); border-top-color: var(--accent); }
+.sv-n { font-size: 11px; letter-spacing: 2px; color: var(--dim); margin-bottom: 32px; font-weight: 500; }
+.sv-t { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: #fff; margin-bottom: 12px; line-height: 1.3; }
+.sv-d { font-size: 13px; line-height: 1.85; color: var(--muted); }
+.sv-a { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); text-decoration: none; margin-top: 24px; transition: gap .2s; }
+.sv-a::after { content: '→'; }
+.sv-a:hover { gap: 14px; }
+ 
+/* SELL */
+.sell { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.sell-l { padding: 80px 80px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--border); }
+.sell-l p { font-size: 14px; line-height: 1.9; color: var(--muted); max-width: 380px; margin: 18px 0 36px; }
+.sell-r { padding: 60px 80px; display: flex; flex-direction: column; justify-content: center; }
+.fr { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.fr.full { grid-template-columns: 1fr; }
+.fd { display: flex; flex-direction: column; gap: 7px; }
+.fd label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dim); }
+.fd input, .fd select { background: var(--bg); border: 1px solid var(--border); color: var(--text); font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 300; padding: 12px 15px; outline: none; transition: border-color .2s; -webkit-appearance: none; }
+.fd input:focus, .fd select:focus { border-color: rgba(255,255,255,.28); }
+.fd select option { background: #1c1c1c; }
+.fsub { margin-top: 18px; width: 100%; background: #fff; color: #000; border: none; padding: 14px; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; cursor: pointer; transition: background .2s; }
+.fsub:hover { background: #e0e0e0; }
+ 
+/* NEWS */
+.news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.nc { background: var(--surface); overflow: hidden; cursor: pointer; }
+.nc:hover .ni-in { transform: scale(1.04); }
+.ni { height: 205px; overflow: hidden; }
+.ni-in { width: 100%; height: 100%; transition: transform .7s cubic-bezier(.22,1,.36,1); display: flex; align-items: center; justify-content: center; font-size: 50px; }
+.nb1{background:linear-gradient(135deg,#1a1208,#0c0c0c)} .nb2{background:linear-gradient(135deg,#081018,#0c0c0c)} .nb3{background:linear-gradient(135deg,#0e0810,#0c0c0c)}
+.n-body { padding: 26px 26px 30px; }
+.n-cat { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.n-ttl { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400; color: #fff; line-height: 1.45; margin-bottom: 18px; }
+.n-meta { display: flex; align-items: center; justify-content: space-between; }
+.n-date { font-size: 10px; color: var(--dim); letter-spacing: 1px; }
+.n-rd { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .2s; }
+.n-rd:hover { color: #fff; }
+ 
+/* NEWSLETTER */
+.nl { padding: 68px 64px; background: var(--surface); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.nl-t h3 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 400; color: #fff; margin-bottom: 7px; }
+.nl-t p { font-size: 13px; color: var(--muted); }
+.nl-f { display: flex; gap: 2px; flex: 1; max-width: 460px; }
+.nl-f input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-right: none; color: var(--text); font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 300; padding: 13px 17px; outline: none; }
+.nl-f input:focus { border-color: rgba(255,255,255,.2); }
+.nl-f button { background: #fff; color: #000; border: none; padding: 13px 26px; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; white-space: nowrap; transition: background .2s; }
+.nl-f button:hover { background: #e0e0e0; }
+ 
+/* FOOTER */
+footer { background: var(--bg); border-top: 1px solid var(--border); padding: 70px 64px 38px; }
+.ft-top { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 52px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+.ft-b img { height: 26px; filter: brightness(10); margin-bottom: 18px; display: block; }
+.ft-b-fb { font-size: 15px; font-weight: 600; letter-spacing: 3px; color: #fff; text-transform: uppercase; margin-bottom: 14px; display: none; }
+.ft-b-fb span { color: var(--accent); }
+.ft-b p { font-size: 12px; line-height: 1.9; color: var(--dim); max-width: 240px; margin-bottom: 22px; }
+.ft-soc { display: flex; gap: 8px; }
+.ft-s { width: 34px; height: 34px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--dim); font-size: 10px; font-weight: 600; text-decoration: none; transition: all .2s; }
+.ft-s:hover { border-color: var(--muted); color: #fff; }
+.ft-c h5 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 22px; font-weight: 500; }
+.ft-c ul { list-style: none; }
+.ft-c li { margin-bottom: 11px; }
+.ft-c a { font-size: 12px; color: var(--dim); text-decoration: none; transition: color .2s; }
+.ft-c a:hover { color: #fff; }
+.ft-btm { display: flex; justify-content: space-between; align-items: center; }
+.ft-btm span, .ft-btm a { font-size: 11px; color: var(--dim); text-decoration: none; transition: color .2s; }
+.ft-btm a:hover { color: #fff; }
+ 
+/* REVEAL */
+.r { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.r.on { opacity: 1; transform: none; }
+.d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
+ 
+@media(max-width:1100px){
+  nav{padding:0 28px} .nav-links{display:none}
+  .sec,.sec-sm{padding:72px 28px}
+  .inv-grid{grid-template-columns:1fr 1fr} .ic.feat{grid-column:span 2}
+  .about-grid{grid-template-columns:1fr} .about-vis{min-height:280px}
+  .br-grid{grid-template-columns:repeat(4,1fr)}
+  .sell{grid-template-columns:1fr} .sell-l{border-right:none;border-bottom:1px solid var(--border);padding:56px 40px} .sell-r{padding:44px 40px}
+  .ft-top{grid-template-columns:1fr 1fr}
+  .nl{flex-direction:column;align-items:flex-start} .nl-f{max-width:100%;width:100%}
+}
+@media(max-width:768px){
+  .ql{grid-template-columns:1fr} .ql a{border-right:none;border-bottom:1px solid var(--border)}
+  .inv-grid,.svc-grid,.news-grid{grid-template-columns:1fr} .ic.feat{grid-column:span 1} .ic.feat .ic-img{height:240px}
+  .br-grid{grid-template-columns:repeat(3,1fr)}
+  .ft-top{grid-template-columns:1fr} .ft-btm{flex-direction:column;gap:10px;text-align:center}
+  footer,.nl{padding:52px 24px 30px}
+  .hero-content{padding:0 28px 68px} .hero-scroll{display:none} .hero-car{width:96vw;bottom:20%}
+  .about-txt{padding:48px 32px}
+}
+</style>
+</head>
+<body>
+ 
+<nav id="nav">
+  <a href="#" class="logo">
+    <img src="/mnt/user-data/uploads/41620638.png" alt="AutoNation"
+      onerror="this.style.display='none';document.querySelector('.logo-fb').style.display='block'">
+    <span class="logo-fb">Auto<span>Nation</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#inventory">Inventory</a></li>
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-r">
+    <a href="#contact" class="nbtn">Sell My Car</a>
+    <a href="#inventory" class="nbtn fill">View Cars</a>
+  </div>
+</nav>
+ 
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-car">
+    <svg viewBox="0 0 820 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 188 C70 188 106 188 136 188 C138 188 148 184 160 178 L196 144 C216 120 244 105 286 99 L356 94 C400 91 456 90 500 93 L572 100 C618 108 648 128 668 154 L686 172 C706 178 730 184 754 188 L774 188" stroke="rgba(255,255,255,0.76)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M196 144 C214 120 242 105 282 99 L358 94 C408 91 466 91 510 95 L572 102 C614 110 642 128 662 152" stroke="rgba(255,255,255,0.28)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <path d="M214 138 L246 108 C262 92 288 84 322 81 L428 79 C468 78 504 81 526 90 L558 108 L566 128" stroke="rgba(255,255,255,0.2)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <circle cx="208" cy="190" r="38" stroke="rgba(255,255,255,0.7)" stroke-width="2.2" fill="none"/>
+      <circle cx="208" cy="190" r="24" stroke="rgba(255,255,255,0.22)" stroke-width="1.4" fill="none"/>
+      <circle cx="208" cy="190" r="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.4" fill="none"/>
+      <circle cx="614" cy="190" r="38" stroke="rgba(255,255,255,0.7)" stroke-width="2.2" fill="none"/>
+      <circle cx="614" cy="190" r="24" stroke="rgba(255,255,255,0.22)" stroke-width="1.4" fill="none"/>
+      <circle cx="614" cy="190" r="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.4" fill="none"/>
+      <line x1="40" y1="188" x2="172" y2="188" stroke="rgba(255,255,255,0.25)" stroke-width="1.4"/>
+      <line x1="244" y1="188" x2="578" y2="188" stroke="rgba(255,255,255,0.25)" stroke-width="1.4"/>
+      <line x1="650" y1="188" x2="774" y2="188" stroke="rgba(255,255,255,0.25)" stroke-width="1.4"/>
+      <path d="M758 165 L774 161 L778 170 L764 174 Z" stroke="rgba(255,255,255,0.45)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
+      <path d="M42 182 L76 182 L80 188" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" fill="none"/>
+    </svg>
+  </div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">South Africa's Premier Dealership</div>
+    <h1 class="hero-h1">Exceptional Cars.<br>Exceptional Service.</h1>
+    <p class="hero-sub">AutoNation curates the world's finest luxury and performance automobiles for South Africa's most discerning collectors.</p>
+    <div class="hero-btns">
+      <a href="#inventory" class="btn btn-w">View Inventory</a>
+      <a href="#contact" class="btn btn-g">Sell My Car</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="sbar"></div><span>Scroll</span></div>
+</section>
+ 
+<div class="ql">
+  <a href="#inventory" class="r"><div><span class="qs">Browse</span><div class="qt">Available Cars</div></div><span class="qa">→</span></a>
+  <a href="#contact" class="r d1"><div><span class="qs">Get a Valuation</span><div class="qt">Sell My Car</div></div><span class="qa">→</span></a>
+  <a href="#brands" class="r d2"><div><span class="qs">Explore</span><div class="qt">Premium Brands</div></div><span class="qa">→</span></a>
+</div>
+ 
+<section class="sec" id="inventory">
+  <div class="sec-hd r">
+    <div><div class="lbl">Our Collection</div><h2 class="ttl">Available Vehicles</h2></div>
+    <a href="#" class="va">View All Cars</a>
+  </div>
+  <div class="inv-grid">
+ 
+    <div class="ic feat r">
+      <div class="ic-img"><div class="ic-in cb1">
+        <svg class="ic-svg" viewBox="0 0 560 190" fill="none">
+          <path d="M25 145 C50 145 82 145 112 145 L138 112 C154 92 178 80 212 76 L278 72 C316 70 362 70 394 73 L444 82 C474 91 490 108 500 126 L512 139 C524 143 534 145 544 145" stroke="rgba(255,255,255,0.78)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="158" cy="146" r="29" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none"/>
+          <circle cx="158" cy="146" r="17" stroke="rgba(255,255,255,0.2)" stroke-width="1.4" fill="none"/>
+          <circle cx="448" cy="146" r="29" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none"/>
+          <circle cx="448" cy="146" r="17" stroke="rgba(255,255,255,0.2)" stroke-width="1.4" fill="none"/>
+          <line x1="25" y1="145" x2="131" y2="145" stroke="rgba(255,255,255,0.28)" stroke-width="1.4"/>
+          <line x1="185" y1="145" x2="421" y2="145" stroke="rgba(255,255,255,0.28)" stroke-width="1.4"/>
+          <line x1="475" y1="145" x2="544" y2="145" stroke="rgba(255,255,255,0.28)" stroke-width="1.4"/>
+          <path d="M138 112 L166 82 C180 68 202 62 232 60 L320 58 C358 57 390 60 408 70 L434 88 L444 112" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" fill="none"/>
+        </svg>
+      </div>
+      <div class="ic-badge b-new">New Arrival</div>
+      <div class="ic-ov"><span>View Details</span></div></div>
+      <div class="ic-body">
+        <div class="ic-make">Ferrari</div><div class="ic-model">SF90 Stradale</div>
+        <div class="ic-specs">
+          <div class="ic-sp"><span class="ic-sv">986 hp</span><span class="ic-sk">Power</span></div>
+          <div class="ic-sp"><span class="ic-sv">2.5 s</span><span class="ic-sk">0–100 km/h</span></div>
+          <div class="ic-sp"><span class="ic-sv">340 km/h</span><span class="ic-sk">Top Speed</span></div>
+          <div class="ic-sp"><span class="ic-sv">2022</span><span class="ic-sk">Year</span></div>
+        </div>
+        <div class="ic-ft"><div><div class="ic-price">R 18,500,000</div><div class="ic-poa">Price on Application</div></div><div class="ic-arr">→</div></div>
+      </div>
+    </div>
+ 
+    <div class="ic r d1">
+      <div class="ic-img"><div class="ic-in cb2">
+        <svg class="ic-svg" viewBox="0 0 400 155" fill="none">
+          <path d="M16 118 C38 118 62 118 85 118 L106 88 C118 72 138 63 163 60 L215 57 C248 56 280 56 300 59 L338 68 C358 77 368 92 374 108 L380 117 C388 119 394 119 396 118" stroke="rgba(255,255,255,0.76)" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+          <circle cx="116" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
+          <circle cx="116" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
+          <circle cx="316" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
+          <circle cx="316" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
+          <line x1="16" y1="118" x2="95" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+          <line x1="137" y1="118" x2="295" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+          <line x1="337" y1="118" x2="396" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <div class="ic-badge b-av">Available</div><div class="ic-ov"><span>View Details</span></div></div>
+      <div class="ic-body"><div class="ic-make">Lamborghini</div><div class="ic-model">Huracán EVO</div>
+        <div class="ic-specs"><div class="ic-sp"><span class="ic-sv">640 hp</span><span class="ic-sk">Power</span></div><div class="ic-sp"><span class="ic-sv">2.9 s</span><span class="ic-sk">0–100</span></div><div class="ic-sp"><span class="ic-sv">2021</span><span class="ic-sk">Year</span></div></div>
+        <div class="ic-ft"><div><div class="ic-price">R 7,200,000</div></div><div class="ic-arr">→</div></div>
+      </div>
+    </div>
+ 
+    <div class="ic r d2">
+      <div class="ic-img"><div class="ic-in cb3">
+        <svg class="ic-svg" viewBox="0 0 400 155" fill="none">
+          <path d="M14 118 C36 118 60 118 84 118 L106 86 C120 68 142 59 170 56 L226 53 C260 52 292 52 312 56 L350 65 C370 75 380 92 384 109 L388 117 C392 118 396 118 398 118" stroke="rgba(255,255,255,0.76)" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+          <circle cx="118" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
+          <circle cx="118" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
+          <circle cx="318" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
+          <circle cx="318" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
+          <line x1="14" y1="118" x2="97" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+          <line x1="139" y1="118" x2="297" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+          <line x1="339" y1="118" x2="398" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <div class="ic-badge b-av">Available</div><div class="ic-ov"><span>View Details</span></div></div>
+      <div class="ic-body"><div class="ic-make">Porsche</div><div class="ic-model">911 Turbo S</div>
+        <div class="ic-specs"><div class="ic-sp"><span class="ic-sv">650 hp</span><span class="ic-sk">Power</span></div><div class="ic-sp"><span class="ic-sv">2.7 s</span><span class="ic-sk">0–100</span></div><div class="ic-sp"><span class="ic-sv">2023</span><span class="ic-sk">Year</span></div></div>
+        <div class="ic-ft"><div><div class="ic-price">R 5,900,000</div></div><div class="ic-arr">→</div></div>
+      </div>
+    </div>
+ 
+    <div class="ic r d1">
+      <div class="ic-img"><div class="ic-in cb4">
+        <svg class="ic-svg" viewBox="0 0 400 155" fill="none">
+          <path d="M12 118 C36 118 62 118 90 118 L114 84 C130 64 154 55 184 52 L240 50 C274 49 306 50 326 54 L362 65 C382 75 390 93 394 110 L396 117 C398 118 400 118 400 118" stroke="rgba(255,255,255,0.76)" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+          <circle cx="124" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
+          <circle cx="124" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
+          <circle cx="314" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
+          <circle cx="314" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
+          <line x1="12" y1="118" x2="103" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+          <line x1="145" y1="118" x2="293" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+          <line x1="335" y1="118" x2="400" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <div class="ic-badge b-av">Available</div><div class="ic-ov"><span>View Details</span></div></div>
+      <div class="ic-body"><div class="ic-make">McLaren</div><div class="ic-model">720S Spider</div>
+        <div class="ic-specs"><div class="ic-sp"><span class="ic-sv">720 hp</span><span class="ic-sk">Power</span></div><div class="ic-sp"><span class="ic-sv">2.8 s</span><span class="ic-sk">0–100</span></div><div class="ic-sp"><span class="ic-sv">2022</span><span class="ic-sk">Year</span></div></div>
+        <div class="ic-ft"><div><div class="ic-price">R 9,800,000</div></div><div class="ic-arr">→</div></div>
+      </div>
+    </div>
+ 
+    <div class="ic r d2">
+      <div class="ic-img"><div class="ic-in cb5">
+        <svg class="ic-svg" viewBox="0 0 400 155" fill="none">
+          <path d="M10 116 C36 116 66 116 96 116 L120 84 C138 62 164 54 196 51 L252 49 C286 48 316 49 336 53 L372 64 C390 74 396 92 398 110 L400 115 L400 116" stroke="rgba(255,255,255,0.76)" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+          <circle cx="128" cy="117" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
+          <circle cx="128" cy="117" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
+          <circle cx="318" cy="117" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
+          <circle cx="318" cy="117" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
+          <line x1="10" y1="116" x2="107" y2="116" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+          <line x1="149" y1="116" x2="297" y2="116" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+          <line x1="339" y1="116" x2="400" y2="116" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <div class="ic-badge b-av">Available</div><div class="ic-ov"><span>View Details</span></div></div>
+      <div class="ic-body"><div class="ic-make">Rolls-Royce</div><div class="ic-model">Cullinan Black Badge</div>
+        <div class="ic-specs"><div class="ic-sp"><span class="ic-sv">600 hp</span><span class="ic-sk">Power</span></div><div class="ic-sp"><span class="ic-sv">4.9 s</span><span class="ic-sk">0–100</span></div><div class="ic-sp"><span class="ic-sv">2023</span><span class="ic-sk">Year</span></div></div>
+        <div class="ic-ft"><div><div class="ic-price">R 14,200,000</div></div><div class="ic-arr">→</div></div>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<div class="mq">
+  <div class="mq-t">
+    <span class="mq-i">Ferrari</span><span class="mq-i">Lamborghini</span><span class="mq-i">Porsche</span><span class="mq-i">Rolls-Royce</span><span class="mq-i">Bentley</span><span class="mq-i">McLaren</span><span class="mq-i">Bugatti</span><span class="mq-i">Aston Martin</span><span class="mq-i">Mercedes-AMG</span><span class="mq-i">BMW M</span><span class="mq-i">Maserati</span><span class="mq-i">Pagani</span>
+    <span class="mq-i">Ferrari</span><span class="mq-i">Lamborghini</span><span class="mq-i">Porsche</span><span class="mq-i">Rolls-Royce</span><span class="mq-i">Bentley</span><span class="mq-i">McLaren</span><span class="mq-i">Bugatti</span><span class="mq-i">Aston Martin</span><span class="mq-i">Mercedes-AMG</span><span class="mq-i">BMW M</span><span class="mq-i">Maserati</span><span class="mq-i">Pagani</span>
+  </div>
+</div>
+ 
+<section class="sec" id="about">
+  <div class="about-grid">
+    <div class="about-vis">
+      <svg viewBox="0 0 480 270" fill="none">
+        <path d="M28 210 C55 210 92 210 130 210 L160 168 C178 146 206 132 244 126 L312 121 C354 118 398 118 432 124 L476 136 C504 146 518 166 524 186 L532 205 C544 209 554 210 560 210" stroke="rgba(200,184,154,0.68)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <circle cx="210" cy="212" r="36" stroke="rgba(200,184,154,0.62)" stroke-width="2" fill="none"/>
+        <circle cx="210" cy="212" r="22" stroke="rgba(200,184,154,0.18)" stroke-width="1.4" fill="none"/>
+        <circle cx="210" cy="212" r="8" stroke="rgba(200,184,154,0.28)" stroke-width="1.4" fill="none"/>
+        <circle cx="468" cy="212" r="36" stroke="rgba(200,184,154,0.62)" stroke-width="2" fill="none"/>
+        <circle cx="468" cy="212" r="22" stroke="rgba(200,184,154,0.18)" stroke-width="1.4" fill="none"/>
+        <circle cx="468" cy="212" r="8" stroke="rgba(200,184,154,0.28)" stroke-width="1.4" fill="none"/>
+        <line x1="28" y1="210" x2="176" y2="210" stroke="rgba(200,184,154,0.28)" stroke-width="1.4"/>
+        <line x1="244" y1="210" x2="434" y2="210" stroke="rgba(200,184,154,0.28)" stroke-width="1.4"/>
+        <line x1="500" y1="210" x2="560" y2="210" stroke="rgba(200,184,154,0.28)" stroke-width="1.4"/>
+      </svg>
+    </div>
+    <div class="about-txt r">
+      <div class="lbl">Our Story</div>
+      <h2 class="ttl" style="margin-bottom:26px">Redefining<br>Automotive Excellence<br>in South Africa</h2>
+      <p>AutoNation was built on a singular conviction — that South Africa's most discerning collectors deserve access to the world's finest automobiles without compromise.</p>
+      <p>Every vehicle in our collection is hand-selected for its provenance, condition, and character. We don't just sell cars — we connect passionate clients with machines that mean something.</p>
+      <div class="stat-row">
+        <div><span class="st-n">500+</span><span class="st-l">Vehicles Sold</span></div>
+        <div><span class="st-n">8</span><span class="st-l">Years Active</span></div>
+        <div><span class="st-n">12</span><span class="st-l">Premium Brands</span></div>
+      </div>
+      <a href="#contact" class="btn btn-g" style="align-self:flex-start">Get in Touch</a>
+    </div>
+  </div>
+</section>
+ 
+<section class="sec-sm" id="brands" style="background:var(--surface)">
+  <div class="sec-hd r" style="max-width:1400px;margin:0 auto 44px">
+    <div><div class="lbl">Represented Marques</div><h2 class="ttl">Premium Brands</h2></div>
+  </div>
+  <div class="br-grid r">
+    <div class="br-cell"><span>Ferrari</span></div><div class="br-cell"><span>Lamborghini</span></div>
+    <div class="br-cell"><span>Porsche</span></div><div class="br-cell"><span>Rolls-Royce</span></div>
+    <div class="br-cell"><span>Bentley</span></div><div class="br-cell"><span>McLaren</span></div>
+    <div class="br-cell"><span>Bugatti</span></div><div class="br-cell"><span>Aston Martin</span></div>
+    <div class="br-cell"><span>Mercedes-AMG</span></div><div class="br-cell"><span>BMW M</span></div>
+    <div class="br-cell"><span>Maserati</span></div><div class="br-cell"><span>Pagani</span></div>
+  </div>
+</section>
+ 
+<section class="sec" id="services">
+  <div class="sec-hd r"><div><div class="lbl">What We Do</div><h2 class="ttl">Our Services</h2></div></div>
+  <div class="svc-grid">
+    <div class="sv r"><div class="sv-n">01</div><h3 class="sv-t">Buy a Vehicle</h3><p class="sv-d">Browse our curated collection of ultra-premium automobiles sourced globally. Every vehicle is fully verified with documented provenance.</p><a href="#inventory" class="sv-a">Explore Inventory</a></div>
+    <div class="sv r d1"><div class="sv-n">02</div><h3 class="sv-t">Sell Your Car</h3><p class="sv-d">Receive the best market value for your vehicle. Our experts deliver fair, transparent valuations and swift, hassle-free transactions.</p><a href="#contact" class="sv-a">Get a Valuation</a></div>
+    <div class="sv r d2"><div class="sv-n">03</div><h3 class="sv-t">Vehicle Sourcing</h3><p class="sv-d">Looking for something specific? Our global network lets us locate any vehicle to your exact specification, anywhere in the world.</p><a href="#contact" class="sv-a">Make a Request</a></div>
+    <div class="sv r"><div class="sv-n">04</div><h3 class="sv-t">Consignment</h3><p class="sv-d">Let us handle the sale of your vehicle entirely — marketing, viewings, negotiations — while you receive maximum return.</p><a href="#contact" class="sv-a">Get Started</a></div>
+    <div class="sv r d1"><div class="sv-n">05</div><h3 class="sv-t">Vehicle Finance</h3><p class="sv-d">Flexible financing solutions tailored to you. Our financial partners offer competitive rates across all major SA banks.</p><a href="#contact" class="sv-a">Learn More</a></div>
+    <div class="sv r d2"><div class="sv-n">06</div><h3 class="sv-t">Insurance</h3><p class="sv-d">Comprehensive cover for your prized vehicle. We partner with South Africa's leading insurers for complete peace of mind.</p><a href="#contact" class="sv-a">Get a Quote</a></div>
+  </div>
+</section>
+ 
+<div class="sell" id="contact">
+  <div class="sell-l r">
+    <div class="lbl">Quick &amp; Simple</div>
+    <h2 class="ttl">Sell Your Car<br>With AutoNation</h2>
+    <p>Our team will evaluate your vehicle and connect it with the right buyer at the right price. Fill in your details and we'll respond within 24 hours.</p>
+    <a href="tel:+27110000000" class="btn btn-w" style="align-self:flex-start">Call Us Now</a>
+  </div>
+  <div class="sell-r r d1">
+    <form onsubmit="hf(event)">
+      <div class="fr">
+        <div class="fd"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+        <div class="fd"><label>Phone Number</label><input type="tel" placeholder="+27 XX XXX XXXX" required></div>
+      </div>
+      <div class="fr">
+        <div class="fd"><label>Vehicle Brand</label>
+          <select><option value="">Select brand</option><option>Ferrari</option><option>Lamborghini</option><option>Porsche</option><option>Rolls-Royce</option><option>Bentley</option><option>McLaren</option><option>Mercedes-AMG</option><option>BMW M</option><option>Other</option></select>
+        </div>
+        <div class="fd"><label>Model &amp; Year</label><input type="text" placeholder="e.g. 911 Turbo S, 2022"></div>
+      </div>
+      <div class="fr full"><div class="fd"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div></div>
+      <button type="submit" class="fsub" id="fsub">Submit Enquiry</button>
+    </form>
+  </div>
+</div>
+ 
+<section class="sec" id="news">
+  <div class="sec-hd r"><div><div class="lbl">Latest</div><h2 class="ttl">News &amp; Stories</h2></div><a href="#" class="va">All Articles</a></div>
+  <div class="news-grid">
+    <div class="nc r"><div class="ni"><div class="ni-in nb1">🏎️</div></div><div class="n-body"><div class="n-cat">New Arrivals</div><h3 class="n-ttl">The Ferrari SF90 Stradale Is Now in Our Showroom</h3><div class="n-meta"><span class="n-date">Mar 2025</span><a href="#" class="n-rd">Read →</a></div></div></div>
+    <div class="nc r d1"><div class="ni"><div class="ni-in nb2">📈</div></div><div class="n-body"><div class="n-cat">Market Insights</div><h3 class="n-ttl">Why Luxury Car Values Are Rising Across SA in 2025</h3><div class="n-meta"><span class="n-date">Feb 2025</span><a href="#" class="n-rd">Read →</a></div></div></div>
+    <div class="nc r d2"><div class="ni"><div class="ni-in nb3">⚡</div></div><div class="n-body"><div class="n-cat">Electric</div><h3 class="n-ttl">Electrification of the Supercar: What Buyers Need to Know</h3><div class="n-meta"><span class="n-date">Jan 2025</span><a href="#" class="n-rd">Read →</a></div></div></div>
+  </div>
+</section>
+ 
+<div class="nl r">
+  <div class="nl-t"><h3>Stay Ahead of the Curve</h3><p>New arrivals, market insights and exclusive events — direct to your inbox.</p></div>
+  <div class="nl-f"><input type="email" placeholder="Enter your email address"><button type="button">Subscribe</button></div>
+</div>
+ 
+<footer>
+  <div class="ft-top">
+    <div class="ft-b">
+      <img src="/mnt/user-data/uploads/41620638.png" alt="AutoNation"
+        onerror="this.style.display='none';document.querySelectorAll('.ft-b-fb').forEach(e=>e.style.display='block')">
+      <div class="ft-b-fb">Auto<span>Nation</span></div>
+      <p>South Africa's premier luxury automobile dealership. Curating extraordinary vehicles for extraordinary individuals since 2017.</p>
+      <div class="ft-soc"><a href="#" class="ft-s">ig</a><a href="#" class="ft-s">yt</a><a href="#" class="ft-s">in</a><a href="#" class="ft-s">fb</a></div>
+    </div>
+    <div class="ft-c"><h5>Vehicles</h5><ul><li><a href="#">Available Inventory</a></li><li><a href="#">Sold Vehicles</a></li><li><a href="#">Compare Models</a></li><li><a href="#">Sell My Car</a></li><li><a href="#">Vehicle Sourcing</a></li></ul></div>
+    <div class="ft-c"><h5>Company</h5><ul><li><a href="#">About Us</a></li><li><a href="#">Our Team</a></li><li><a href="#">Careers</a></li><li><a href="#">News &amp; Blogs</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div class="ft-c"><h5>Contact</h5><ul><li><a href="#">Johannesburg, South Africa</a></li><li><a href="tel:+27110000000">+27 11 000 0000</a></li><li><a href="mailto:info@autonation.co.za">info@autonation.co.za</a></li><li><a href="#">Mon – Sat: 9am – 6pm</a></li><li><a href="#">WhatsApp Us</a></li></ul></div>
+  </div>
+  <div class="ft-btm"><span>© 2025 AutoNation. All rights reserved.</span><span><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Use</a></span></div>
+</footer>
+ 
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>20),{passive:true});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.07});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+function hf(e){e.preventDefault();const b=document.getElementById('fsub');b.textContent='Enquiry Received ✓';b.style.background='#1a3a2a';b.style.color='#6fcf97';setTimeout(()=>{b.textContent='Submit Enquiry';b.style.background='';b.style.color='';e.target.reset();},3500);}
+</script>
+</body>
+</html>
