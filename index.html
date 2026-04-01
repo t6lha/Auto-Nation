@@ -84,6 +84,7 @@ nav.solid { background: rgba(12,12,12,0.96); border-bottom: 1px solid var(--bord
 .ic:hover .ic-in { transform: scale(1.04); }
 .ic:hover .ic-ov { opacity: 1; }
 .ic-img { overflow: hidden; }
+.car-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
 .ic.feat .ic-img { height: 370px; }
 .ic:not(.feat) .ic-img { height: 215px; }
 .ic-in { width: 100%; height: 100%; transition: transform .7s cubic-bezier(.22,1,.36,1); display: flex; align-items: center; justify-content: center; }
@@ -232,7 +233,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 70
  
 <nav id="nav">
   <a href="#" class="logo">
-    <img src="/mnt/user-data/uploads/41620638.png" alt="AutoNation"
+    <img src="images/logo.png" alt="AutoNation"
       onerror="this.style.display='none';document.querySelector('.logo-fb').style.display='block'">
     <span class="logo-fb">Auto<span>Nation</span></span>
   </a>
@@ -297,19 +298,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 70
   <div class="inv-grid">
  
     <div class="ic feat r">
-      <div class="ic-img"><div class="ic-in cb1">
-        <svg class="ic-svg" viewBox="0 0 560 190" fill="none">
-          <path d="M25 145 C50 145 82 145 112 145 L138 112 C154 92 178 80 212 76 L278 72 C316 70 362 70 394 73 L444 82 C474 91 490 108 500 126 L512 139 C524 143 534 145 544 145" stroke="rgba(255,255,255,0.78)" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <circle cx="158" cy="146" r="29" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none"/>
-          <circle cx="158" cy="146" r="17" stroke="rgba(255,255,255,0.2)" stroke-width="1.4" fill="none"/>
-          <circle cx="448" cy="146" r="29" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none"/>
-          <circle cx="448" cy="146" r="17" stroke="rgba(255,255,255,0.2)" stroke-width="1.4" fill="none"/>
-          <line x1="25" y1="145" x2="131" y2="145" stroke="rgba(255,255,255,0.28)" stroke-width="1.4"/>
-          <line x1="185" y1="145" x2="421" y2="145" stroke="rgba(255,255,255,0.28)" stroke-width="1.4"/>
-          <line x1="475" y1="145" x2="544" y2="145" stroke="rgba(255,255,255,0.28)" stroke-width="1.4"/>
-          <path d="M138 112 L166 82 C180 68 202 62 232 60 L320 58 C358 57 390 60 408 70 L434 88 L444 112" stroke="rgba(255,255,255,0.18)" stroke-width="1.1" fill="none"/>
-        </svg>
-      </div>
+      <div class="ic-img"><img class="car-photo" src="images/cars/ferrari-sf90-stradale.jpg" alt="Ferrari SF90 Stradale">
       <div class="ic-badge b-new">New Arrival</div>
       <div class="ic-ov"><span>View Details</span></div></div>
       <div class="ic-body">
@@ -325,18 +314,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 70
     </div>
  
     <div class="ic r d1">
-      <div class="ic-img"><div class="ic-in cb2">
-        <svg class="ic-svg" viewBox="0 0 400 155" fill="none">
-          <path d="M16 118 C38 118 62 118 85 118 L106 88 C118 72 138 63 163 60 L215 57 C248 56 280 56 300 59 L338 68 C358 77 368 92 374 108 L380 117 C388 119 394 119 396 118" stroke="rgba(255,255,255,0.76)" stroke-width="1.9" fill="none" stroke-linecap="round"/>
-          <circle cx="116" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
-          <circle cx="116" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
-          <circle cx="316" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
-          <circle cx="316" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
-          <line x1="16" y1="118" x2="95" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-          <line x1="137" y1="118" x2="295" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-          <line x1="337" y1="118" x2="396" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-        </svg>
-      </div>
+      <div class="ic-img"><img class="car-photo" src="images/cars/lamborghini-huracan-evo.jpg" alt="Lamborghini Huracán EVO">
       <div class="ic-badge b-av">Available</div><div class="ic-ov"><span>View Details</span></div></div>
       <div class="ic-body"><div class="ic-make">Lamborghini</div><div class="ic-model">Huracán EVO</div>
         <div class="ic-specs"><div class="ic-sp"><span class="ic-sv">640 hp</span><span class="ic-sk">Power</span></div><div class="ic-sp"><span class="ic-sv">2.9 s</span><span class="ic-sk">0–100</span></div><div class="ic-sp"><span class="ic-sv">2021</span><span class="ic-sk">Year</span></div></div>
@@ -345,18 +323,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 70
     </div>
  
     <div class="ic r d2">
-      <div class="ic-img"><div class="ic-in cb3">
-        <svg class="ic-svg" viewBox="0 0 400 155" fill="none">
-          <path d="M14 118 C36 118 60 118 84 118 L106 86 C120 68 142 59 170 56 L226 53 C260 52 292 52 312 56 L350 65 C370 75 380 92 384 109 L388 117 C392 118 396 118 398 118" stroke="rgba(255,255,255,0.76)" stroke-width="1.9" fill="none" stroke-linecap="round"/>
-          <circle cx="118" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
-          <circle cx="118" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
-          <circle cx="318" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
-          <circle cx="318" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
-          <line x1="14" y1="118" x2="97" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-          <line x1="139" y1="118" x2="297" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-          <line x1="339" y1="118" x2="398" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-        </svg>
-      </div>
+      <div class="ic-img"><img class="car-photo" src="images/cars/porsche-911-turbo-s.jpg" alt="Porsche 911 Turbo S">
       <div class="ic-badge b-av">Available</div><div class="ic-ov"><span>View Details</span></div></div>
       <div class="ic-body"><div class="ic-make">Porsche</div><div class="ic-model">911 Turbo S</div>
         <div class="ic-specs"><div class="ic-sp"><span class="ic-sv">650 hp</span><span class="ic-sk">Power</span></div><div class="ic-sp"><span class="ic-sv">2.7 s</span><span class="ic-sk">0–100</span></div><div class="ic-sp"><span class="ic-sv">2023</span><span class="ic-sk">Year</span></div></div>
@@ -365,18 +332,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 70
     </div>
  
     <div class="ic r d1">
-      <div class="ic-img"><div class="ic-in cb4">
-        <svg class="ic-svg" viewBox="0 0 400 155" fill="none">
-          <path d="M12 118 C36 118 62 118 90 118 L114 84 C130 64 154 55 184 52 L240 50 C274 49 306 50 326 54 L362 65 C382 75 390 93 394 110 L396 117 C398 118 400 118 400 118" stroke="rgba(255,255,255,0.76)" stroke-width="1.9" fill="none" stroke-linecap="round"/>
-          <circle cx="124" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
-          <circle cx="124" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
-          <circle cx="314" cy="119" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
-          <circle cx="314" cy="119" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
-          <line x1="12" y1="118" x2="103" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-          <line x1="145" y1="118" x2="293" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-          <line x1="335" y1="118" x2="400" y2="118" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-        </svg>
-      </div>
+      <div class="ic-img"><img class="car-photo" src="images/cars/mclaren-720s-spider.jpg" alt="McLaren 720S Spider">
       <div class="ic-badge b-av">Available</div><div class="ic-ov"><span>View Details</span></div></div>
       <div class="ic-body"><div class="ic-make">McLaren</div><div class="ic-model">720S Spider</div>
         <div class="ic-specs"><div class="ic-sp"><span class="ic-sv">720 hp</span><span class="ic-sk">Power</span></div><div class="ic-sp"><span class="ic-sv">2.8 s</span><span class="ic-sk">0–100</span></div><div class="ic-sp"><span class="ic-sv">2022</span><span class="ic-sk">Year</span></div></div>
@@ -385,18 +341,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 70
     </div>
  
     <div class="ic r d2">
-      <div class="ic-img"><div class="ic-in cb5">
-        <svg class="ic-svg" viewBox="0 0 400 155" fill="none">
-          <path d="M10 116 C36 116 66 116 96 116 L120 84 C138 62 164 54 196 51 L252 49 C286 48 316 49 336 53 L372 64 C390 74 396 92 398 110 L400 115 L400 116" stroke="rgba(255,255,255,0.76)" stroke-width="1.9" fill="none" stroke-linecap="round"/>
-          <circle cx="128" cy="117" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
-          <circle cx="128" cy="117" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
-          <circle cx="318" cy="117" r="23" stroke="rgba(255,255,255,0.68)" stroke-width="1.9" fill="none"/>
-          <circle cx="318" cy="117" r="13" stroke="rgba(255,255,255,0.18)" stroke-width="1.3" fill="none"/>
-          <line x1="10" y1="116" x2="107" y2="116" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-          <line x1="149" y1="116" x2="297" y2="116" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-          <line x1="339" y1="116" x2="400" y2="116" stroke="rgba(255,255,255,0.26)" stroke-width="1.3"/>
-        </svg>
-      </div>
+      <div class="ic-img"><img class="car-photo" src="images/cars/rolls-royce-cullinan-black-badge.jpg" alt="Rolls-Royce Cullinan Black Badge">
       <div class="ic-badge b-av">Available</div><div class="ic-ov"><span>View Details</span></div></div>
       <div class="ic-body"><div class="ic-make">Rolls-Royce</div><div class="ic-model">Cullinan Black Badge</div>
         <div class="ic-specs"><div class="ic-sp"><span class="ic-sv">600 hp</span><span class="ic-sk">Power</span></div><div class="ic-sp"><span class="ic-sv">4.9 s</span><span class="ic-sk">0–100</span></div><div class="ic-sp"><span class="ic-sv">2023</span><span class="ic-sk">Year</span></div></div>
@@ -513,7 +458,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 70
 <footer>
   <div class="ft-top">
     <div class="ft-b">
-      <img src="/mnt/user-data/uploads/41620638.png" alt="AutoNation"
+      <img src="images/logo.png" alt="AutoNation"
         onerror="this.style.display='none';document.querySelectorAll('.ft-b-fb').forEach(e=>e.style.display='block')">
       <div class="ft-b-fb">Auto<span>Nation</span></div>
       <p>South Africa's premier luxury automobile dealership. Curating extraordinary vehicles for extraordinary individuals since 2017.</p>
